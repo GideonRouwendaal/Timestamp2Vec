@@ -1,11 +1,13 @@
 # Timestamp2Vec
 
 
-- [About](#about)
-- [Explanation](#explanation)
-- [Usage](#usage)
-- [How to run](#how-to-run)
-
+1. [About](#about)
+2. [Explanation](#explanation)
+3. [Usage](#usage)
+    1. [Example Usage Vector Embeddings](#example---create-vector-embeddings)
+    2. [Visualization Latent Space Consecutive Timestamps](#example---visualize-latent-space---consecutive-timestamps)
+    3. [Visualization Latent Space Random Timestamps](#example---visualize-latent-space---random-timestamps)
+4. [How to run](#how-to-run)
 
 # About
 This Repository is made for the Bachelor Thesis of Gideon Rouwendaal (2022). It contains an explanation about  Timestamp2Vec, information about the usage and information about the VAE and NAS. Timestamp2Vec, the repository, also contains a Visualization and Evaluation Notebook. The Visualization Notebook can be used to visualize the latent space created by the model. The Evaluation Notebook demonstrates how timestamps can be vectorized by Timestamp2Vec. In addition, an evaluation of the model is performed. <br>
@@ -17,7 +19,7 @@ The Timestamp2Vec model consists of 2 parts: a feature extractor and an encoder,
 ![](./Timestamp2Vec.png)
 # Usage
 Timestamp2Vec is used to vectorize timestamps. To load the model, import the Timestamp2Vec Class from Timestamp2Vec.py from the Timestamp2Vec_Class folder and create an instance of it. Use the __call__ method to retrieve the embedding.
-## Example
+## Example - Create Vector Embeddings
 ```python
 from Timestamp2Vec_Class.Timestamp2Vec import *
 
@@ -26,11 +28,59 @@ vectorized = timestamp2vec("2000-01-01 00:00:00")
 print(vectorized)
 ```
 
-## Output
+## Output - Vector Embeddings
 ```
 array([[-2.7181404 , -1.6645893 ,  0.06427887, -1.684483  ,  0.0221834 ,
         -0.05639424,  1.3969079 ,  0.705029  ]], dtype=float32)
 ```
+
+## Example - Visualize Latent Space - Consecutive Timestamps
+```python
+from Timestamp2Vec_Class.Timestamp2Vec import *
+from Timestamp2Vec_Model.helper_functions import *
+
+timestamp2vec = Timestamp2Vec()
+
+# define the start date
+start_date = "2953-03-20 12:00:00"
+
+# define the end date
+end_date = "2953-03-20 12:17:00"
+
+# use the plot_all_latent_combinations function and pass the start date, end date, the interest, the interval, and the model
+plot_all_latent_combinations(start_date, end_date, "s", 1, timestamp2vec)
+
+# use the plot_select_latent_combinations function to plot certain combinations and pass the start date, end date, the interest, the interval, the latent combinations, and the model
+plot_select_latent_combinations(start_date, end_date, "s", 1, [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8]], timestamp2vec)
+```
+
+## Output - Latent Space - Consecutive Timestamps
+![](./second_consec_all.png)
+![](./second_consec_specific.png)
+
+## Example - Visualize Latent Space - Random Timestamps
+```python
+from Timestamp2Vec_Class.Timestamp2Vec import *
+from Timestamp2Vec_Model.helper_functions import *
+
+timestamp2vec = Timestamp2Vec()
+
+# define the end date to sample from
+start_date = "0001-01-01 00:00:00"
+
+# define the end date to sample from
+end_date = "9999-12-31 23:59:59"
+
+# use the plot_sample_individuals function and pass the start date, end date, the interest, the number of samples, the model, and whether the interest should be the same as the start_date
+plot_sample_individuals(start_date, end_date, "Y", 1000, timestamp2vec, single_interst=False)
+
+# use the plot_sample_individuals function to plot certain combinations and and pass the start date, end date, the interest, the number of samples, the model, and whether the interest should be the same as the start_date
+plot_sample_individuals(start_date, end_date, "Y", 1000, timestamp2vec,  [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8]], single_interst=False)
+```
+
+## Output - Latent Space - Consecutive Timestamps
+![](./second_random_all.png)
+![](./second_random_specific.png)
 
 # How to run
 1. Clone the Timestamp2Vec repository 

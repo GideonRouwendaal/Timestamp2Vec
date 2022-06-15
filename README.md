@@ -15,7 +15,7 @@ In the VAE folder, a VAE Notebook can be found that will create and train a Vari
 In the NAS folder, a NAS Notebook can be found. Neural Architecture Search (NAS) has been used to approximate the  optimal arhicture for the VAE.
 
 # Explanation
-The Timestamp2Vec model consists of 2 parts: a feature extractor and an encoder, which is originally part of a variational autoencoder (VAE). The input of Timestamp2Vec is a timestamp in the shape YYYY-MM-DD HH:MM:SS and is of type String. The output of the model is a numpy array of shape (1, 8).
+The Timestamp2Vec model consists of 2 parts: a feature extractor and an encoder, which is originally part of a variational autoencoder (VAE). The input of Timestamp2Vec is a timestamp in the shape YYYY-MM-DD HH:MM:SS and is of type String. The String(s) should be placed inside a list, before giving it to the model. The output of the model is a numpy array of shape (1, 8).
 ![](./Timestamp2Vec.png)
 # Usage
 Timestamp2Vec is used to vectorize timestamps. To load the model, import the Timestamp2Vec Class from Timestamp2Vec.py from the Timestamp2Vec_Class folder and create an instance of it. Use the __call__ method to retrieve the embedding.

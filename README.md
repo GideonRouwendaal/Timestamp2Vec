@@ -21,7 +21,7 @@ The Timestamp2Vec model consists of 2 parts: a feature extractor and an encoder,
 Timestamp2Vec is used to vectorize timestamps. To load the model, import the Timestamp2Vec Class from Timestamp2Vec.py from the Timestamp2Vec_Class folder and create an instance of it. Use the __call__ method to retrieve the embedding.
 ## Example - Create Vector Embeddings
 ```python
-from Timestamp2Vec_Class.Timestamp2Vec import *
+from Timestamp2Vec.Timestamp2Vec import *
 
 timestamp2vec = Timestamp2Vec()
 vectorized = timestamp2vec("2000-01-01 00:00:00")
@@ -36,8 +36,8 @@ array([[-2.7181404 , -1.6645893 ,  0.06427887, -1.684483  ,  0.0221834 ,
 
 ## Example - Visualize Latent Space - Consecutive Timestamps
 ```python
-from Timestamp2Vec_Class.Timestamp2Vec import *
-from Timestamp2Vec_Model.helper_functions import *
+from Timestamp2Vec.Timestamp2Vec import *
+from Timestamp2Vec.helper_functions import *
 
 timestamp2vec = Timestamp2Vec()
 
@@ -60,8 +60,8 @@ plot_select_latent_combinations(start_date, end_date, "s", 1, [[1, 2], [1, 3], [
 
 ## Example - Visualize Latent Space - Random Timestamps
 ```python
-from Timestamp2Vec_Class.Timestamp2Vec import *
-from Timestamp2Vec_Model.helper_functions import *
+from Timestamp2Vec.Timestamp2Vec import *
+from Timestamp2Vec.helper_functions import *
 
 timestamp2vec = Timestamp2Vec()
 

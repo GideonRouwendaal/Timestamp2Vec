@@ -10,7 +10,7 @@
 4. [How to run](#how-to-run)
 
 # About
-This Repository is made for the Bachelor Thesis of Gideon Rouwendaal (2022). It contains an explanation about  Timestamp2Vec, information about the usage and information about the VAE and NAS. Timestamp2Vec, the repository, also contains a Visualization and Evaluation Notebook. The Visualization Notebook can be used to visualize the latent space created by the model. The Evaluation Notebook demonstrates how timestamps can be vectorized by Timestamp2Vec. In addition, an evaluation of the model is performed. <br>
+This Repository is made for the Bachelor Thesis of Gideon Rouwendaal (2022). It contains an explanation about Timestamp2Vec, information about the usage and information about the VAE and NAS. Timestamp2Vec, the repository, also contains a Visualization and Evaluation Notebook. The Visualization Notebook can be used to visualize the latent space created by the model. The Evaluation Notebook demonstrates how timestamps can be vectorized by Timestamp2Vec. In addition, an evaluation of the model is performed. <br>
 In the VAE folder, a VAE Notebook can be found that will create and train a Variational Autoencoder. The encoder of this VAE is used in the Timestamp2Vec model. <br>
 In the NAS folder, a NAS Notebook can be found. Neural Architecture Search (NAS) has been used to approximate the  optimal arhicture for the VAE.
 

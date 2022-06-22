@@ -123,6 +123,9 @@ def plot_all_latent_combinations(start, end, interest, interval, model, to_label
     possible_combinations = [[dim1, dim2] for dim1 in range(LATENT_DIM) for dim2 in range(dim1 + 1, LATENT_DIM)]
     n_possible_combinations = len(possible_combinations)
 
+    unique_label_values = np.unique(labels)
+    n_unique_label_values = len(unique_label_values)
+    
     combination = 0
 
     width = -1
@@ -155,10 +158,13 @@ def plot_all_latent_combinations(start, end, interest, interval, model, to_label
 
 
     # else legend too big
-    fig.subplots_adjust(right=0.8)
-    cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
-    fig.colorbar(cmap, cax=cbar_ax)
-    fig.show()
+    if n_unique_label_values > 15:
+        fig.subplots_adjust(right=0.8)
+        cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
+        fig.colorbar(cmap, cax=cbar_ax)
+    else:
+        legend_labels = [str(label) + interest for label in unique_label_values]
+        fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
 
 
 
@@ -225,7 +231,6 @@ def plot_select_latent_combinations(start, end, interest, interval, combinations
 
     fig.suptitle('Combinations of latent spaces ' + unique_dims + ' from ' + str(start) + " till " + str(end) + " with an interval of " + str(interval), y=0.93, fontsize="xx-large", fontweight="bold")
 
-    legend_labels = [str(label) + interest for label in unique_label_values]
         
     # else legend too big
     if n_unique_label_values > 15:
@@ -233,6 +238,7 @@ def plot_select_latent_combinations(start, end, interest, interval, combinations
         cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
         fig.colorbar(cmap, cax=cbar_ax)
     else:
+        legend_labels = [str(label) + interest for label in unique_label_values]
         fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
     
 

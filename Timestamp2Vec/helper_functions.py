@@ -1,6 +1,9 @@
 # Import packages
 import matplotlib.pyplot as plt
 plt.set_cmap('jet')
+plt.rc('xtick',labelsize=18)
+plt.rc('ytick',labelsize=18)
+
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -149,22 +152,26 @@ def plot_all_latent_combinations(start, end, interest, interval, model, to_label
             axs[i, j].scatter(x, y, c=labels)
             axs[i, j].set_title("Latent dimensions: " + str(possible_combinations[combination][0] + 1) + " and " + str(possible_combinations[combination][1] + 1))
             axs[i, j].set(xlabel="Dimension: " + str(possible_combinations[combination][0] + 1), ylabel="Dimension: " + str(possible_combinations[combination][1] + 1))
+            axs[i, j].set_title("Latent dimensions: " + str(possible_combinations[combination][0] + 1) + " and " + str(possible_combinations[combination][1] + 1), fontsize=24)
+            # axs[i, j].set(xlabel="Dimension: " + str(combinations[combination][0] + 1), ylabel="Dimension: " + str(combinations[combination][1] + 1))
+            axs[i, j].set_xlabel("Dimension: " + str(possible_combinations[combination][0] + 1), fontsize=24)
+            axs[i, j].set_ylabel("Dimension: " + str(possible_combinations[combination][1] + 1), fontsize=24)
             if to_label:
                 label_point(x, y, labels, axs[i, j], .001)
             combination += 1
 
     interest = "" if interval == " unspecified" else interest
-    fig.suptitle('All combinations of latent spaces from ' + str(start) + " till " + str(end) + " with an interval of " + interval, y=0.93, fontsize="xx-large", fontweight="bold")
+    # fig.suptitle('All combinations of latent spaces from ' + str(start) + " till " + str(end) + " with an interval of " + interval, y=0.93, fontsize="xx-large", fontweight="bold")
 
 
     # else legend too big
-    if n_unique_label_values > 15:
-        fig.subplots_adjust(right=0.8)
-        cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
-        fig.colorbar(cmap, cax=cbar_ax)
-    else:
-        legend_labels = [str(label) + interest for label in unique_label_values]
-        fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
+    # if n_unique_label_values > 15:
+    fig.subplots_adjust(right=0.8)
+    cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
+    fig.colorbar(cmap, cax=cbar_ax)
+    # else:
+        # legend_labels = [str(label) + interest for label in unique_label_values]
+        # fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
 
 
 
@@ -221,25 +228,27 @@ def plot_select_latent_combinations(start, end, interest, interval, combinations
                 subplt = axs[i, j]
             cmap = subplt.scatter(x, y, c=labels)
             subplt.scatter(x, y, c=labels)
-            subplt.set_title("Latent dimensions: " + str(combinations[combination][0] + 1) + " and " + str(combinations[combination][1] + 1))
+            subplt.set_title("Latent dimensions: " + str(combinations[combination][0] + 1) + " and " + str(combinations[combination][1] + 1), fontsize=24)
             subplt.set(xlabel="Dimension: " + str(combinations[combination][0] + 1), ylabel="Dimension: " + str(combinations[combination][1] + 1))
+            subplt.set_xlabel("Dimension: " + str(combinations[combination][0] + 1), fontsize=24)
+            subplt.set_ylabel("Dimension: " + str(combinations[combination][1] + 1), fontsize=24)
             if to_label:
                 label_point(x, y, labels, subplt, .001)
             if combination == len(combinations) - 1:
                 break
             combination += 1
 
-    fig.suptitle('Combinations of latent spaces ' + unique_dims + ' from ' + str(start) + " till " + str(end) + " with an interval of " + str(interval), y=0.93, fontsize="xx-large", fontweight="bold")
+    # fig.suptitle('Combinations of latent spaces ' + unique_dims + ' from ' + str(start) + " till " + str(end) + " with an interval of " + str(interval), y=0.93, fontsize="xx-large", fontweight="bold")
 
         
     # else legend too big
-    if n_unique_label_values > 15:
-        fig.subplots_adjust(right=0.8)
-        cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
-        fig.colorbar(cmap, cax=cbar_ax)
-    else:
-        legend_labels = [str(label) + interest for label in unique_label_values]
-        fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
+    # if n_unique_label_values > 15:
+    fig.subplots_adjust(right=0.8)
+    cbar_ax = fig.add_axes([0.81, 0.15, 0.05, 0.7])
+    fig.colorbar(cmap, cax=cbar_ax)
+    # else:
+    #     legend_labels = [str(label) + interest for label in unique_label_values]
+    #     fig.legend(handles=cmap.legend_elements()[0], labels = legend_labels, loc = "center right", prop={"size":18})
     
 
     if len(combinations) % 2 != 0 and length > 0:

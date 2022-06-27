@@ -78,7 +78,7 @@ plot_sample_individuals(start_date, end_date, "Y", 1000, timestamp2vec, single_i
 plot_sample_individuals(start_date, end_date, "Y", 1000, timestamp2vec,  [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8]], single_interst=False)
 ```
 
-## Output - Latent Space - Consecutive Timestamps
+## Output - Latent Space - Random Timestamps
 ![](./second_random_all.png)
 ![](./second_random_specific.png)
 

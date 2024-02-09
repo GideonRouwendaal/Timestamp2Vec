@@ -2,17 +2,28 @@
 
 
 1. [About](#about)
-2. [Explanation](#explanation)
-3. [Usage](#usage)
+2. [Paper and Citation](#paper-and-citation)
+3. [Explanation](#explanation)
+4. [Usage](#usage)
     1. [Example Usage Vector Embeddings](#example---create-vector-embeddings)
     2. [Visualization Latent Space Consecutive Timestamps](#example---visualize-latent-space---consecutive-timestamps)
     3. [Visualization Latent Space Random Timestamps](#example---visualize-latent-space---random-timestamps)
-4. [How to run](#how-to-run)
+5. [How to run](#how-to-run)
 
 # About
 This Repository contains an explanation about Timestamp2Vec, information about the usage and information about the VAE and NAS. Timestamp2Vec, the repository, also contains a Visualization and Evaluation Notebook. The Visualization Notebook can be used to visualize the latent space created by the model. The Evaluation Notebook demonstrates how timestamps can be vectorized by Timestamp2Vec. In addition, an evaluation of the model is performed. <br>
 In the VAE folder, a VAE Notebook can be found that will create and train a Variational Autoencoder. The encoder of this VAE is used in the Timestamp2Vec model. <br>
 In the NAS folder, a NAS Notebook can be found. Neural Architecture Search (NAS) has been used to approximate the  optimal arhicture for the VAE.
+
+# Paper and Citation
+This work has also been published as [research paper](https://bnaic2023.tudelft.nl/static/media/BNAICBENELEARN_2023_paper_22.8008c2ad762741171748.pdf) at the AI & ML conference for Belgium, Netherlands & Luxembourg ([BNAIC](https://bnaic2023.tudelft.nl/)).
+The paper and repository should be cited as:
+```
+@article{rouwendaalvectorizing,
+  title={Vectorizing Timestamps by means of a Variational Autoencoder},
+  author={Rouwendaal, Gideon and Wilcke, Xander}
+}
+```
 
 # Explanation
 The Timestamp2Vec model consists of 2 parts: a feature extractor and an encoder, which is originally part of a variational autoencoder (VAE). The input of Timestamp2Vec is a timestamp in the shape YYYY-MM-DD HH:MM:SS and is of type String. The String(s) should be placed inside a list, before giving it to the model. The output of the model is a numpy array of shape (1, 8). <br>
